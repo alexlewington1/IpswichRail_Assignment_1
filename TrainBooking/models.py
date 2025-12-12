@@ -5,11 +5,12 @@ class LoginDetails(models.Model):
     password = models.CharField("Password", max_length=30)
 
 class TrainTimes(models.Model):
-    departure_station = models.CharField("Departure Station", max_length=30)
-    arrival_station = models.CharField("Arrival Station", max_length=30)
-    arrival_time = models.CharField("Arrival Time", max_length=30)
-    departure_time = models.CharField("Departure Time", max_length=30)
-    price = models.DecimalField("Price", max_digits=10, decimal_places=2)
+    departure_time = models.TimeField()
+    departure_station = models.CharField(max_length=100)
+    arrival_time = models.TimeField()
+    arrival_station = models.CharField(max_length=100)
+    duration = models.CharField(max_length=50)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
 
 
 

@@ -1,10 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Available Trains</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IpswichRail – Available Trains</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background: #f3f5f7;
+      font-family: "Inter", sans-serif;
+    }
+
+    .card {
+      margin: 40px auto;
+      width: 90%;
+      max-width: 1100px;
+      background: #fff;
+      padding: 50px 60px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .nav a {
+      color: #0f2940;
+      font-size: 18px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .signin-btn {
+      background: #1f3a5a;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 35px;
+      color: #0f2940;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 18px;
+    }
+
+    thead {
+      font-weight: 600;
+      color: #0f2940;
+    }
+
+    th, td {
+      padding: 20px 0;
+    }
+
+    tr {
+      border-bottom: 1px solid #e5e8eb;
+    }
+
+    td {
+      font-weight: 500;
+      color: #0f2940;
+    }
+  </style>
 </head>
+
 <body>
+
+  <div class="card">
+
+    <!-- NAV -->
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="{% url 'login' %}">Sign in</a>
+    </nav>
+
+    <h1>Available trains</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Departure</th>
+          <th></th>
+          <th align="left">Arrival</th>
+          <th></th>
+          <th align="left">Duration</th>
+          <th align="left">Price</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {% for train in trains %}
+        <tr>
+          <td>{{ train.departure_time|time:"H:i" }}</td>
+          <td>{{ train.departure_station }}</td>
+
+          <td>{{ train.arrival_time|time:"H:i" }}</td>
+          <td>{{ train.arrival_station }}</td>
+
+          <td>{{ train.duration }}</td>
+          <td>£{{ train.price }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="6" style="padding: 30px 0; font-size: 20px; text-align: center; color: #555;">
+            No trains available for your search.
+          </td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+  </div>
 
 </body>
 </html>

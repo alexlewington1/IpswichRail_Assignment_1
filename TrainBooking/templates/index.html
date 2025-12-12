@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+{% load static %}
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -303,7 +304,7 @@
 
     <aside class="right" aria-label="Highlights and destinations">
       <div class="art" aria-hidden="false">
-        <img src="../static/images/train.png" alt="Stylized train illustration">
+        <img src="{% static 'images/train.png' %}" alt="Stylized train illustration">
       </div>
 
       <div class="discover">

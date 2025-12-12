@@ -36,7 +36,6 @@
       justify-content:center;
     }
 
-    /* main card */
     .card{
       width:1100px;
       max-width:calc(100% - 48px);
@@ -49,7 +48,6 @@
       align-items:stretch;
     }
 
-    /* header (logo + nav) */
     .header{
       display:flex;
       align-items:center;
@@ -100,10 +98,7 @@
       border:1px solid rgba(15,41,64,0.06);
     }
 
-    /* layout columns */
-    .left{
-      width:55%;
-    }
+    .left{ width:55%; }
     .right{
       width:45%;
       display:flex;
@@ -122,7 +117,6 @@
       letter-spacing:-1.5px;
     }
 
-    /* tabs */
     .tabs{
       display:flex;
       gap:24px;
@@ -138,9 +132,7 @@
       color:var(--dark);
       position:relative;
     }
-    .tab.active{
-      color:var(--accent);
-    }
+    .tab.active{ color:var(--accent); }
     .tab.active::after{
       content:"";
       position:absolute;
@@ -200,7 +192,6 @@
       font-size:18px;
     }
 
-    /* right column content */
     .art{
       align-self:center;
       background:var(--accent-2);
@@ -237,11 +228,10 @@
       font-weight:600;
     }
 
-    /* small screens */
     @media (max-width:980px){
       body{ padding:18px; }
       .card{ padding:20px; gap:18px; flex-direction:column; width:100%;}
-      .left, .right{ width:100%;}
+      .left, .right{ width:100%; }
       h2.big{ font-size:52px; }
       .art img{ width:100%; max-width:520px; }
       .cities{ grid-template-columns:1fr 1fr; gap:8px 28px; }
@@ -249,11 +239,11 @@
 
     @media (max-width:520px){
       h2.big{ font-size:36px; }
-      .logo h1{ font-size:18px;}
+      .logo h1{ font-size:18px; }
       .tabs{ gap:12px }
       .tab.active::after{ width:48px; }
-      .search-btn{ width:100%; padding:14px;}
-      .controls{ flex-direction:column; align-items:stretch;}
+      .search-btn{ width:100%; padding:14px; }
+      .controls{ flex-direction:column; align-items:stretch; }
     }
   </style>
 </head>
@@ -268,9 +258,9 @@
 
         <nav class="topnav" aria-label="Top navigation">
           <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-          <a class="signin" href="#">Sign in</a>
+          <a href="/ticketsearch">Search</a>
+          <a href="/ticketbooking">Book</a>
+          <a class="signin" href="/login">Sign in</a>
         </nav>
       </header>
 
@@ -278,31 +268,42 @@
 
       <div class="tabs" role="tablist" aria-label="Trip type">
         <div class="tab active" role="tab" aria-selected="true" tabindex="0">One-way</div>
-        <div class="tab" role="tab" aria-selected="false" tabindex="-1">Round trip</div>
       </div>
 
       <form class="search-form" aria-label="Search trains">
         <div>
           <label for="from">From</label>
-          <input id="from" class="input" type="text" placeholder="Station" />
+          <select id="from" class="input">
+            <option value="" disabled selected>Select station</option>
+            <option value="A">Station A</option>
+            <option value="B">Station B</option>
+            <option value="C">Station C</option>
+            <option value="D">Station D</option>
+          </select>
         </div>
 
         <div>
           <label for="to">To</label>
-          <input id="to" class="input" type="text" placeholder="MM/DD/YYYY" />
+          <select id="to" class="input">
+            <option value="" disabled selected>Select station</option>
+            <option value="A">Station A</option>
+            <option value="B">Station B</option>
+            <option value="C">Station C</option>
+            <option value="D">Station D</option>
+          </select>
         </div>
 
-        <div class="controls">
-          <button type="submit" class="search-btn" aria-label="Search trains">Search</button>
+      <div class="controls">
+        <button type="button" class="search-btn" aria-label="Search trains" onclick="window.location.href='/ticketsearch'">
+        Search
+        </button>
         </div>
       </form>
     </div>
 
     <aside class="right" aria-label="Highlights and destinations">
       <div class="art" aria-hidden="false">
-        <!-- If the image file exists at this path, it will be shown -->
         <img src="../static/images/train.png" alt="Stylized train illustration">
-
       </div>
 
       <div class="discover">

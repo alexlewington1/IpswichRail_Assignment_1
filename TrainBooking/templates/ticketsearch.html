@@ -101,9 +101,9 @@
 
     <!-- NAVIGATION -->
     <nav class="nav">
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a class="signin-btn" href="#">Sign in</a>
+      <a href="{% url 'index' %}">Home</a>
+      <a href="{% url 'ticketbook' %}">Book</a>
+      <a class="signin-btn" href="{% url 'login' %}">Sign in</a>
     </nav>
 
     <h1>Search for train tickets</h1>

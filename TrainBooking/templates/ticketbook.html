@@ -94,6 +94,7 @@
 
 <body>
 
+
   <div class="card">
 
     <!-- NAVIGATION -->
@@ -106,31 +107,62 @@
     <h1>Book train tickets</h1>
 
     <form>
-      <label for="from">From</label>
-      <input id="from" class="input" type="text" placeholder="Station">
+        <form method="post">
+  {% csrf_token %}
 
-      <label for="to">To</label>
-      <input id="to" class="input" type="text" placeholder="Station">
+  <label for="from">From</label>
+  <input id="from" class="input" type="text" placeholder="Station">
 
-      <div class="row">
-        <div style="flex: 1;">
-          <label for="date">Date</label>
-          <input id="date" class="input" type="text" placeholder="MM/DD/YYYY">
-        </div>
+  <label for="to">To</label>
+  <input id="to" class="input" type="text" placeholder="Station">
 
-        <div style="flex: 1;">
-          <label for="passengers">Passengers</label>
-          <select id="passengers">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-      </div>
+  <!-- DATE -->
+  <label>Date</label>
+  <div class="row">
+    <select name="day">
+      <option value="">DD</option>
+      {% for d in "1234567890123456789012345678901"|make_list %}
+        <option value="{{ forloop.counter }}">
+          {{ forloop.counter|stringformat:"02d" }}
+        </option>
+      {% endfor %}
+    </select>
 
-      <button class="book-btn" type="submit">Book</button>
+    <select name="month">
+      <option value="">MM</option>
+      {% for m in "123456789012"|make_list %}
+        <option value="{{ forloop.counter }}">
+          {{ forloop.counter|stringformat:"02d" }}
+        </option>
+      {% endfor %}
+    </select>
+
+    <select name="year">
+      <option value="">YYYY</option>
+      <option>2025</option>
+      <option>2026</option>
+      <option>2027</option>
+      <option>2028</option>
+      <option>2029</option>
+      <option>2030</option>
+    </select>
+  </div>
+
+  <!-- PASSENGERS -->
+  <label for="passengers">Passengers</label>
+  <select id="passengers">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+
+  <!-- BUTTON -->
+  <button class="book-btn" type="submit">Book</button>
+
+</form>
+
     </form>
 
   </div>

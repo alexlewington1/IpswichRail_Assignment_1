@@ -1,10 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import TrainTime
+from django.contrib.auth.forms import UserCreationForm
 
 def index(response):
     return render (response, 'index.html')
-def createaccount(response):
-    return render (response, 'createaccount.html')
+
+## User creation code to save user details
+def createaccount(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('createaccount')
+    else:
+            form = UserCreationForm()
+    return render(request, "createaccount.html", { 'form': form })
+
 def login(response):
     return render (response, 'login.html')
 def ticketbooking(response):

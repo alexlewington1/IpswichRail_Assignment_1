@@ -114,33 +114,14 @@
     </div>
 
     <h2>Create your account</h2>
+{% block content %}
+    <form class="form-with-validation" action="{% url 'createaccount' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button>Submit</button>
 
-    <form>
-
-      <div class="row">
-        <div style="flex:1;">
-          <label for="first">First name</label>
-          <input id="first" class="input" type="text" placeholder="First name">
-        </div>
-
-        <div style="flex:1;">
-          <label for="last">Last name</label>
-          <input id="last" class="input" type="text" placeholder="Last name">
-        </div>
-      </div>
-
-      <label for="email">Email</label>
-      <input id="email" class="input" type="email" placeholder="Enter your email">
-
-      <label for="password">Password</label>
-      <input id="password" class="input" type="password" placeholder="Create a password">
-
-      <label for="confirm">Confirm password</label>
-      <input id="confirm" class="input" type="password" placeholder="Re-enter password">
-
-      <button class="signup-btn" type="submit">Sign up</button>
     </form>
-
+{% endblock %}
     <div class="login-link">
       Already have an account? <a href="{% url 'login' %}">Log in</a>
     </div>

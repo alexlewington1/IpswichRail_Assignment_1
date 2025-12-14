@@ -22,6 +22,8 @@ def ticketbooking(response):
     return render (response, 'ticketbook.html')
 def ticketsearch(response):
     return render (response, 'ticketsearch.html')
+def bookingconfirmation(response):
+    return render (response, 'bookingconfirmation.html')
 def available_trains(request):
     # Get filter parameter
     selected_station = request.GET.get('station')

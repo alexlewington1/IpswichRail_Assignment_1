@@ -1,83 +1,98 @@
 # IpswichRail — Train Booking (Assignment 1)
 
-A simple Django-based train booking demonstration web application built for the IpswichRail assignment. This project implements core booking pages, a train schedule model, and admin interfaces to manage available trains.
+A compact Django-based train booking demo used for the IpswichRail assignment. The project includes a small `TrainBooking` app with templates, views, and a `TrainTime` model to store schedule and pricing information.
 
--- NOTE --
-The HTML code of this was generated using ChatGPT and then modified by myself in order to better fit the project.
+## What changed / New code added
+- New frontend templates and pages supporting booking flows and search:
+	- `available_trains.html`, `ticketbook.html`, `ticketsearch.html`, `createaccount.html`, `login.html`, `bookingconfirmation.html`
+- Routes and views added under `TrainBooking/urls.py` and `TrainBooking/views.py` to serve the pages and perform simple filtering of available trains.
+
+-- NOTE -- The HTML code of this was generated using ChatGPT and then modified by myself in order to better fit the project.
 
 ## Features
 - Browse and filter available trains by departure station.
-- Simple pages for Create Account, Login, Ticket Booking, and Ticket Search.
-- Admin interface to manage train times.
-- Uses SQLite (db.sqlite3) by default for quick setup and development.
+- Pages for Create Account, Login, Ticket Booking, Ticket Search, and booking confirmation.
+- Admin interface to create/manage `TrainTime` entries.
+- Uses SQLite (`db.sqlite3`) by default for quick local development.
 
-## Project Structure
-- `IpswichRail/` — Django project settings and root URLs.
-- `TrainBooking/` — Django app containing models, views, URL routes, templates and admin registration.
-- `TrainBooking/templates/` — Frontend HTML templates used by views.
-- `db.sqlite3` — Default SQLite database (auto-generated).
-- `requirements.txt` — Project Python dependencies.
+## Project layout (important files)
+- `IpswichRail/` — Django project settings, root URL config.
+- `TrainBooking/` — App code: models, views, URLs, templates, admin.
+- `TrainBooking/templates/` — HTML templates listed above.
+- `requirements.txt` — Python dependencies.
 
-Key models
-- `TrainBooking/models.py` — Defines `TrainTime` which stores train schedule info (departure/arrival times and stations, duration, and price).
+## Routes (available)
+The app's routes (as defined in `TrainBooking/urls.py`) are:
 
-Key views and URLs
-- `TrainBooking/views.py` — Contains simple view functions for the main pages and `available_trains`, which supports filtering by a station.
-- `TrainBooking/urls.py` — Routes to the views (home, available trains, create account, login, ticket booking, ticket search).
+- `/` → home/index page
+- `/availabletrains/` → list and filter trains
+- `/createaccount/` → signup page
+- `/login/` → login page
+- `/ticketbooking/` → book a ticket
+- `/ticketsearch/` → search existing tickets
+- `/bookingconfirmation/` → booking confirmation page
 
-## Getting Started (Development)
-Prerequisites: Python 3.11+ recommended, virtual environment tool of your choice.
+## Quick Start (development)
+Prereqs: Python 3.11+ recommended, virtualenv or venv.
 
 1. Create and activate a virtual environment
-```
+
+```bash
 python -m venv venv
 source venv/bin/activate
 ```
 
 2. Install dependencies
-```
+
+```bash
 pip install -r requirements.txt
 ```
 
-3. Run database migrations
-```
+3. Apply migrations
+
+```bash
 python manage.py migrate
 ```
 
-4. Create a Django superuser (optional, for admin access)
-```
+4. (Optional) Create a Django superuser to access the admin
+
+```bash
 python manage.py createsuperuser
 ```
 
-5. Start the development server
-```
+5. Run the development server
+
+```bash
 python manage.py runserver
 ```
+
 Open http://127.0.0.1:8000 in your browser.
 
-6. Admin site
-- Visit `/admin/` and sign in with the superuser to manage `TrainTime` entries.
+Admin site is available at `/admin/` for managing `TrainTime` entries and other models.
 
-## Sample data
-Add `TrainTime` entries using the admin panel or via Django shell:
-```
+## Adding sample data
+Add `TrainTime` entries through the admin UI or the Django shell:
+
+```bash
 python manage.py shell
 from TrainBooking.models import TrainTime
 TrainTime.objects.create(departure_time='09:30', departure_station='Ipswich', arrival_time='11:15', arrival_station='London', duration='1h45', price=29.99)
+exit()
 ```
 
 ## Tests
-Run the Django test suite:
-```
+Run tests with:
+
+```bash
 python manage.py test
 ```
 
 ## Notes
-- This project is intended for demonstration and academic purposes — it is minimal and lacks production-ready features like authentication logic, input validation, and comprehensive error handling.
-- The templates are located under `TrainBooking/templates/` and use Django template tags for static assets. Static files are expected to be managed for deployment (e.g., `collectstatic`) if serving in production.
+- This project is a learning/demo app and is not production hardened (limited validation, auth, and error handling).
+- For production deployments, configure static file serving, a production-ready DB, secure settings, and proper authentication.
 
 ## Contributing
-This project is simple and used for learning. Please open issues or PRs with improvements.
+Improvements and fixes are welcome — please open issues or pull requests.
 
 ## License
-No explicit license provided. Contact the repository owner if you need licensing information.
+No license specified. Contact the repository owner for details.

@@ -9,6 +9,8 @@ A compact Django-based train booking demo used for the IpswichRail assignment. T
 
 -- NOTE -- The HTML code of this was generated using ChatGPT and then modified by myself in order to better fit the project.
 
+Link to live site: https://ipswichrail-assignment-1-3.onrender.com/
+
 ## Features
 - Browse and filter available trains by departure station.
 - Pages for Create Account, Login, Ticket Booking, Ticket Search, and booking confirmation.

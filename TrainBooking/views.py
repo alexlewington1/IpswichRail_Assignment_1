@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 def index(response):
     return render (response, 'index.html')
 
-## User creation code to save user details
+##
 def createaccount(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)

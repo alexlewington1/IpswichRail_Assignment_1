@@ -1,9 +1,6 @@
 from django.db import models
 
-class LoginDetails(models.Model):
-    username = models.CharField("Username", max_length=30, unique=True)
-    password = models.CharField("Password", max_length=30)
-
+# Class to handle the addition of train times via the Admin page
 class TrainTime(models.Model):
     departure_time = models.TimeField()
     departure_station = models.CharField(max_length=100)
